@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+
+  <title>ArcGIS API for JS + jQuery template</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <!-- Calcite Maps Bootstrap -->
+  <link rel="stylesheet" href="//esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.3.css">
+
+  <!-- Calcite Maps -->
+  <link rel="stylesheet" href="//esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.3.css">
+  <link rel="stylesheet" href="//js.arcgis.com/4.3/esri/css/main.css">
+  <style type="text/css">
+  html, body, .esri-view {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+  }
+  .calcite-navbar.calcite-bg-light.navbar{
+    background-color: rgba(255,255,255,.5);
+  }
+  .calcite-title-main{
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 8px black;
+    padding-left: 2rem;
+  }
+  .esri-popup--is-docked-top-right{
+    margin-top: 9rem;
+  }
+  </style>
+</head>
+<body ng-controller="MapController" class="calcite calcite-maps calcite-nav-top calcite-margin-all calcite-zoom-top-left calcite-layout-inline-left">
+  <div class="navbar calcite-navbar navbar-fixed-top calcite-bg-light">
+    <div class="calcite-title calcite-overflow-hidden">
+      <span class="calcite-title-main hidden-xs hidden-sm">Map title</span>
+      <span class="calcite-title-divider"></span>
+      <span class="calcite-title-sub">
+        <select  id="bookmark" class="form-control pull-right">
+        </select>
+      </span>
+    </div>
+  </div>
+
+  <div id="viewDiv"></div>
+
+  <!-- load Esri JSAPI -->
+  <script src="//js.arcgis.com/4.3/"></script>
+
+
+  <script type="text/javascript">
+  require([
+        "esri/views/MapView",
+        "esri/WebMap",
+        /*"esri/views/SceneView",
+        "esri/WebScene",*/
+        "dojo/domReady!"
+      ], function(
+        MapView, WebMap
+        //, SceneView, WebScene
+      ) {
+        /*
+        // Load a WebMap
+        var webmap = new WebMap({
+          portalItem: { // autocasts as new PortalItem()
+            id: "f40e2a9a0808434fbaab026288651063"
+          }
+        });
+
+        var view = new MapView({
+          map: webmap,
+          container: "viewDiv"
+        });
+        */
+
+        // Load a WebScene
+        var scene = new WebScene({
+          portalItem: { // autocasts as new PortalItem()
+            id: "c01f1a73f9544391957f1b3d65bf9313"
+          }
+        });
+
+        var view = new SceneView({
+          map: scene,
+          container: "viewDiv",
+          padding: {
+            top: 40
+          }
+        });
+
+      });
+
+  </script>
+</body>
+</html>
